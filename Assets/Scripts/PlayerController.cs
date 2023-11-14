@@ -12,11 +12,13 @@ public class PlayerController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,19 +29,21 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerMove()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalMove = Input.GetAxisRaw("Horizontal") * playerSpeed;
+        float verticalMove = Input.GetAxisRaw("Vertical") * playerSpeed;
 
-        Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput);
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        this.transform.Translate(playerSpeed * moveDirection * Time.deltaTime);
+        Vector3 moveDirection = new Vector3(horizontalMove, 0, verticalMove);
 
-        if(horizontalInput > 0)
+        this.transform.Translate(moveDirection * Time.deltaTime);
+
+        if(horizontalMove > 0)
         {
             spriteRenderer.flipX = true;
 
         }
-        else if(horizontalInput < 0)
+        else if(horizontalMove < 0)
         {
             spriteRenderer.flipX = false;
         }
