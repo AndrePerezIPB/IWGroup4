@@ -6,14 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private float playerSpeed = 5.0f;
-    public int currentRoomNum = 23;
-    public int goalRoomNum;
     public int bluePillCount = 0;
     public int redPillCount = 0;
 
     private SpriteRenderer spriteRenderer;
     public Animator animator;
 
+    //pills
     public List<GameObject> RedPills;
     public List<GameObject> BluePills;
     public float distanceToCollectPill = 1f;
@@ -40,7 +39,9 @@ public class PlayerController : MonoBehaviour
         float horizontalMove = Input.GetAxisRaw("Horizontal") * playerSpeed;
         float verticalMove = Input.GetAxisRaw("Vertical") * playerSpeed;
 
-        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        animator.SetFloat("HorizontalSpeed", Mathf.Abs(horizontalMove));
+        animator.SetFloat("FrontSpeed", verticalMove);
+        animator.SetFloat("BackSpeed", verticalMove);
 
         Vector3 moveDirection = new Vector3(horizontalMove, 0, verticalMove);
 
@@ -68,7 +69,6 @@ public class PlayerController : MonoBehaviour
                 if(Input.GetKey(KeyCode.E))
                 {
                     redPillCount++;
-                    // Debug.Log("redPillCount: " + redPillCount);
                     Destroy(RedPills[i]);
                     RedPills.RemoveAt(i);
                 }
@@ -84,7 +84,6 @@ public class PlayerController : MonoBehaviour
                 if(Input.GetKey(KeyCode.E))
                 {
                     bluePillCount++;
-                    // Debug.Log("bluePillCount: " + redPillCount);
                     Destroy(BluePills[i]);
                     BluePills.RemoveAt(i);
                 }
