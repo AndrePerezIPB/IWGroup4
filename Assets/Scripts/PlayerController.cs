@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private float playerSpeed = 5.0f;
-    public int bluePillCount = 0;
-    public int redPillCount = 0;
+    
+
 
     private SpriteRenderer spriteRenderer;
     public Animator animator;
