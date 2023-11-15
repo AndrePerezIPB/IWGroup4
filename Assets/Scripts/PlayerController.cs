@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float playerSpeed = 5.0f;
     
-    public int currentRoomNum = 23;
+    public int currentRoomNum = 5;
     public int goalRoomNum;
 
     private SpriteRenderer spriteRenderer;
