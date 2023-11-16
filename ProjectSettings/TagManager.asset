@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - normalDoor
+  - RedPill
+  - BluePill
+  - redDoor
+  - blueDoor
   layers:
   - Default
   - TransparentFX

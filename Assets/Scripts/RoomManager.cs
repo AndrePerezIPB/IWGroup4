@@ -28,8 +28,6 @@ public class RoomManager : MonoBehaviour
     
     void Start()
     {
-        currentRoomNum = playerControllerCs.currentRoomNum;
-        goalRoomNum = playerControllerCs.goalRoomNum;
 
         CountDoors();
     }
@@ -102,7 +100,7 @@ public class RoomManager : MonoBehaviour
         if(distanceToCenter.x > 0.7)
         {
             //Left door
-            playerControllerCs.currentRoomNum--;
+            currentRoomNum--;
             currentRoomNum--;
             mainCamera.transform.position += new Vector3(-10, 0, 0);
             Vector3 playerPos = player.transform.position;
@@ -112,7 +110,7 @@ public class RoomManager : MonoBehaviour
         else if(distanceToCenter.x < -0.7)
         {
             //Right door
-            playerControllerCs.currentRoomNum++;
+           currentRoomNum++;
             currentRoomNum++;
             mainCamera.transform.position += new Vector3(10, 0, 0);
             Vector3 playerPos = player.transform.position;
@@ -125,7 +123,7 @@ public class RoomManager : MonoBehaviour
             //Front door
             mainCamera.transform.position += new Vector3(0, -7, 0);
             player.transform.position += new Vector3(0, -7, 0);
-            playerControllerCs.currentRoomNum += 5;
+            currentRoomNum += 5;
             currentRoomNum += 5;
         }
         else if (distanceToCenter.z < 0.7)
@@ -133,7 +131,7 @@ public class RoomManager : MonoBehaviour
             //Back door
             mainCamera.transform.position += new Vector3(0, 7, 0);
             player.transform.position += new Vector3(0, 7, 0);
-            playerControllerCs.currentRoomNum -= 5;
+            currentRoomNum -= 5;
             currentRoomNum -= 5;
         }
 

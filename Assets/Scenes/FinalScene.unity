@@ -631,7 +631,7 @@ Transform:
   m_GameObject: {fileID: 323400822}
   serializedVersion: 2
   m_LocalRotation: {x: 0.03603279, y: -0.00509296, z: 0.0001836352, w: 0.9993376}
-  m_LocalPosition: {x: 20.13622, y: 0.6979823, z: -6.898824}
+  m_LocalPosition: {x: 10.13622, y: 0.6979823, z: -6.898824}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2154,9 +2154,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 1
-  currentRoomNum: 23
-  goalRoomNum: 0
+  redPillCount: 0
+  bluePillCount: 0
   animator: {fileID: 0}
+  RedPills: []
+  BluePills: []
+  distanceToCollectPill: 1
 --- !u!212 &851539308
 SpriteRenderer:
   m_ObjectHideFlags: 0
