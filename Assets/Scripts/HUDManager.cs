@@ -50,6 +50,11 @@ public class HUDManager : MonoBehaviour
                 drugsIndicator.maxValue = 1;
                 drugsIndicator.value = 1;
             }
+            else if (bluePillCount == redPillCount)
+            {
+                drugsIndicator.value = 0.5f;
+                drugsIndicator.maxValue = 1;
+            }
             else if(bluePillCount == 0 && redPillCount > 0)
             {
                 drugsIndicator.value = 0;
@@ -64,11 +69,6 @@ public class HUDManager : MonoBehaviour
             {   
                 drugsIndicator.value = bluePillCount;
                 drugsIndicator.maxValue = redPillCount + bluePillCount;
-            }
-            else if(bluePillCount == redPillCount)
-            {
-                drugsIndicator.value = 0.5f;
-                drugsIndicator.maxValue = 1;
             }
         }
         else
