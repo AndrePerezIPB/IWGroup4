@@ -13,7 +13,6 @@ public class HUDManager : MonoBehaviour
     PlayerController playerController;
     [SerializeField] private int redPillCount, bluePillCount;
     [SerializeField] private float maxDrugIndicator;
-    [SerializeField] private float scale = 0;
 
     void Start()
     {
