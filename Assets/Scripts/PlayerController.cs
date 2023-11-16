@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public int bluePillCount = 0;
 
+    //To count switch the doors on and off on the RoomManager
+    [SerializeField]
+    public RoomManager roomManagerCs;
+
 
     private SpriteRenderer spriteRenderer;
     public Animator animator;
@@ -74,6 +78,9 @@ public class PlayerController : MonoBehaviour
                     redPillCount++;
                     Destroy(RedPills[i]);
                     RedPills.RemoveAt(i);
+
+                    //Check whether the doors should be visible or not
+                    roomManagerCs.DoorVisibility();
                 }
             }
         }
@@ -89,6 +96,9 @@ public class PlayerController : MonoBehaviour
                     bluePillCount++;
                     Destroy(BluePills[i]);
                     BluePills.RemoveAt(i);
+
+                    //Check whether the doors should be visible or not
+                    roomManagerCs.DoorVisibility();
                 }
             }
         }
