@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public int redPillCount = 0;
     [SerializeField] public int bluePillCount = 0;
     [SerializeField] public bool isScared = false;
+    public int memoryCount = 0;
 
     //To count switch the doors on and off on the RoomManager
     [SerializeField] public RoomManager roomManagerCs;

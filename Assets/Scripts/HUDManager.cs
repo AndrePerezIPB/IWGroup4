@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUDManager : MonoBehaviour
 {   
     // UI elements
     public Slider drugsIndicator;
     public GameObject PillsIndicator;
+    public TextMeshProUGUI memoryCounterText; 
+    public int memoryCount = 0;
 
     public GameObject player;
     PlayerController playerController;
@@ -27,11 +30,19 @@ public class HUDManager : MonoBehaviour
         drugsIndicator.interactable = false;
         PillsIndicator = GameObject.Find("PillsIndicator");
         PillsIndicator.SetActive(false);
+
+        memoryCount = playerController.memoryCount;
     }
 
     void Update()
     {
         drugsIndicatorManager();
+        memoryCounterManager();
+    }
+
+    private void memoryCounterManager()
+    {
+        memoryCounterText.SetText(memoryCount.ToString());
     }
 
     private void drugsIndicatorManager()
