@@ -1,19 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private float playerSpeed = 5.0f;
-    [SerializeField]
-    public int redPillCount = 0;
-    [SerializeField]
-    public int bluePillCount = 0;
+    [SerializeField] private float playerSpeed = 5.0f;
+    [SerializeField] public int redPillCount = 0;
+    [SerializeField] public int bluePillCount = 0;
+    [SerializeField] public bool isScared = false;
 
     //To count switch the doors on and off on the RoomManager
-    [SerializeField]
-    public RoomManager roomManagerCs;
+    [SerializeField] public RoomManager roomManagerCs;
 
 
     private SpriteRenderer spriteRenderer;
@@ -24,6 +23,13 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> BluePills;
     public float distanceToCollectPill = 1f;
     private float distanceToPill;
+
+    //dialogue
+    [SerializeField] private float typingSpeed = 0.04f;
+    public TextMeshProUGUI dialogueText;
+    //lists of dialogue
+    [SerializeField] private string[] dialogues = 
+    {"I don't want to enter this room. It's too dark for me"};
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +45,23 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         GetPills();
+        if(isScared && dialogues.Length > 0)
+        {
+            isScared = false;
+            Debug.Log("Before StartCoroutine");
+            StartCoroutine(DisplayLine(dialogues[0]));
+            Debug.Log("After StartCoroutine");
+        }
+    }
+
+    private IEnumerator DisplayLine(string line)
+    {
+
+        foreach (char letter in line.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
     }
 
     private void Move()
@@ -103,4 +126,5 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    
 }
